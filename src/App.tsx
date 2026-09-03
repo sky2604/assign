@@ -1,19 +1,18 @@
 import { useCallback, useState } from 'react'
+import { StoryProvider } from './lib/scrollStory'
+import StoryCanvas from './components/StoryCanvas'
+import StoryProgressRail from './components/StoryProgressRail'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import DocumentReader from './components/DocumentReader'
 import Challenge from './components/sections/Challenge'
-import WhyHard from './components/sections/WhyHard'
-import OrchestrationComplexity from './components/sections/OrchestrationComplexity'
+import Complexity from './components/sections/Complexity'
 import Questions from './components/sections/Questions'
-import KnowDontKnow from './components/sections/KnowDontKnow'
 import Investigation from './components/sections/Investigation'
 import Insight from './components/sections/Insight'
 import Strategy from './components/sections/Strategy'
-import NotDoing from './components/sections/NotDoing'
-import CausalChain from './components/sections/CausalChain'
-import CategoryQuestion from './components/sections/CategoryQuestion'
-import Outcomes from './components/sections/Outcomes'
+import Execution from './components/sections/Execution'
+import Learning from './components/sections/Learning'
 import Conclusion from './components/sections/Conclusion'
 
 function App() {
@@ -32,25 +31,25 @@ function App() {
   }, [])
 
   return (
-    <main className="bg-ink min-h-screen w-full overflow-x-hidden">
-      <Nav onOpenDocument={openDocument} />
-      <Hero onOpenDocument={openDocument} />
-      <Challenge />
-      <WhyHard />
-      <OrchestrationComplexity />
-      <Questions />
-      <KnowDontKnow />
-      <Investigation />
-      <Insight />
-      <Strategy />
-      <NotDoing />
-      <CausalChain />
-      <CategoryQuestion />
-      <Outcomes />
-      <Conclusion onOpenDocument={openDocument} />
+    <StoryProvider>
+      <main className="bg-ink relative min-h-screen w-full overflow-x-hidden">
+        <StoryCanvas />
+        <StoryProgressRail />
+        <Nav onOpenDocument={openDocument} />
+        <Hero onOpenDocument={openDocument} />
+        <Challenge />
+        <Complexity />
+        <Questions />
+        <Investigation />
+        <Insight />
+        <Strategy />
+        <Execution />
+        <Learning />
+        <Conclusion onOpenDocument={openDocument} />
 
-      <DocumentReader isOpen={isDocumentOpen} onClose={closeDocument} />
-    </main>
+        <DocumentReader isOpen={isDocumentOpen} onClose={closeDocument} />
+      </main>
+    </StoryProvider>
   )
 }
 
